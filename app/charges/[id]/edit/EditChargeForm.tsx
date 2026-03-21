@@ -34,7 +34,7 @@ const [hasChanges, setHasChanges] = useState(false);
 
   setIsSaving(true);
 
-  await updateCharge(id, formData);
+  await updateCharge(formData)
 
 setHasChanges(false);
 router.push("/charges");
