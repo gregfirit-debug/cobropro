@@ -21,9 +21,11 @@ export function AppNav() {
   Cobros
 </Link>
 
+ {/*
 <Link href="/account" className="px-2 py-1 rounded hover:bg-gray-100">
   Cuenta
-</Link>  
+</Link>
+*/}
         </nav>
       </div>
     </header>
