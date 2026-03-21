@@ -6,7 +6,7 @@ export default async function DashboardPage() {
   const session = await auth()
 
   if (!session?.user) {
-    redirect("/")
+    return <div>No autenticado</div>
   }
 const charges = await prisma.charge.findMany()
 
@@ -31,6 +31,7 @@ const overdueCount = charges.filter(
 const pendingCount = charges.filter((c) => !c.paid).length
 
 const paidCount = charges.filter((c) => c.paid).length
+
   return (
     <main className="space-y-6">
   <div>
