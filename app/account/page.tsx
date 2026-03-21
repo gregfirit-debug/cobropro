@@ -32,7 +32,7 @@ export default async function HomePage() {
             <form
               action={async () => {
                 "use server"
-                await signIn("google", { redirectTo: "/dashboard" })
+               await signIn("google")
               }}
             >
               <button className="rounded-md bg-black px-4 py-2 text-white">
