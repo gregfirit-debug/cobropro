@@ -1,9 +1,6 @@
 import Link from "next/link"
-import { auth, signIn } from "@/auth"
 
-export default async function HomePage() {
-  const session = await auth()
-
+export default function HomePage() {
   return (
     <main className="mx-auto max-w-4xl px-6 py-16">
       <div className="space-y-6">
@@ -19,29 +16,13 @@ export default async function HomePage() {
           Una app simple para organizar cobros, clientes y seguimiento en un solo lugar.
         </p>
 
-        <div className="flex gap-3 relative z-10">
- 
-          {session?.user ? (
-            <Link
-              href="/dashboard"
-              className="rounded-md bg-black px-4 py-2 text-white"
-            >
-              Ir al dashboard
-            </Link>
-          ) : (
-            <form
-              action={async () => {
-                "use server"
-               await signIn("google")
-              }}
-            >
-              <button className="rounded-md bg-black px-4 py-2 text-white">
-                Entrar con Google
-              </button>
-            </form>
-          )}
-
-          
+        <div className="flex gap-3">
+          <Link
+            href="/charges"
+            className="rounded-md bg-black px-4 py-2 text-white"
+          >
+            Ver cobros
+          </Link>
         </div>
       </div>
     </main>
