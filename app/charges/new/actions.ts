@@ -7,7 +7,7 @@ export async function createCharge(formData: FormData) {
   const clientId = formData.get("clientId")?.toString()
 
 if (!clientId) {
-  throw new Error("Cliente no especificado")
+  return
 }
 
 const client = await prisma.client.findUnique({
@@ -19,8 +19,8 @@ if (!client) {
 }
 
   if (!client) {
-    throw new Error("No hay cliente en la base")
-  }
+  return
+}
 
   const concept = formData.get("concept")?.toString().trim() || ""
   const amountValue = formData.get("amount")?.toString().trim() || ""
