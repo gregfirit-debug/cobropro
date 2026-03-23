@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { createClient } from "./actions"
 
 export default function NewClientPage() {

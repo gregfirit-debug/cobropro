@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import Link from "next/link"
 import { DeleteChargeButton } from "@/components/delete-charge-button"
 import { prisma } from "@/lib/prisma"
