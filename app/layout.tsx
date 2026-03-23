@@ -12,9 +12,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen bg-background text-foreground">
       {/* Server Component */}
       <AppNav /> 
-        <div className="mx-auto w-full max-w-6xl px-4 py-10">
-          {children}
-        </div>
+       <main className="mx-auto w-full max-w-6xl px-4 py-6">
+  {children}
+</main> 
       </body>
     </html>
   )

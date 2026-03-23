@@ -27,5 +27,5 @@ export async function createClient(formData: FormData) {
     },
   })
 
-  redirect(`/clients/${client.id}`)
+ redirect("/clients")
 }
