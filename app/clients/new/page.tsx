@@ -1,12 +1,13 @@
 export const dynamic = "force-dynamic"
 export const revalidate = 0
+
 import { createClient } from "./actions"
 
 export default function NewClientPage() {
   return (
     <div className="space-y-6">
       <div>
-       <h1 className="text-2xl font-semibold">Nuevo cliente TEST 999</h1>
+        <h1 className="text-2xl font-semibold">Nuevo cliente</h1>
         <p>Completá los datos del cliente.</p>
       </div>
 
