@@ -1,3 +1,4 @@
+import { auth } from "@/auth"
 export const revalidate = 60
 
 import Link from "next/link"
@@ -13,7 +14,27 @@ function getChargeStatus(charge: {
 }
 
 export default async function ChargesPage() {
+  const session = await auth()
+  const userEmail = session?.user?.email
+
+  if (!userEmail) {
+    return <div>No hay sesión activa.</div>
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { email: userEmail },
+  })
+
+  if (!user) {
+    return <div>No se encontró el usuario en la base de datos.</div>
+  }
+
   const charges = await prisma.charge.findMany({
+    where: {
+      client: {
+        userId: user.id,
+      },
+    },
     orderBy: [{ paid: "asc" }, { dueDate: "asc" }, { createdAt: "desc" }],
     include: {
       client: true,

@@ -23,12 +23,12 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <Link
-              href="/clients"
-              className="inline-flex items-center justify-center rounded-xl bg-black px-6 py-3 text-sm font-medium text-white"
-            >
-              Empezar ahora
-            </Link>
+           <Link
+  href="/dashboard"
+  className="inline-flex items-center justify-center rounded-xl bg-black px-6 py-3 text-sm font-medium text-white"
+>
+  Empezar ahora
+</Link> 
 
             <Link
               href="/dashboard"

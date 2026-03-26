@@ -3,19 +3,24 @@
 import { prisma } from "@/lib/prisma"
 import { redirect } from "next/navigation"
 import { revalidatePath } from "next/cache"
+import { auth } from "@/auth"
 
 export async function createClient(formData: FormData) {
   try {
-    const userEmail = "test@test.com"
+    const session = await auth()
+    const userEmail = session?.user?.email
 
-    const user = await prisma.user.upsert({
+    if (!userEmail) {
+      throw new Error("No hay sesión activa")
+    }
+
+    const user = await prisma.user.findUnique({
       where: { email: userEmail },
-      update: {},
-      create: {
-        email: userEmail,
-        name: "Test",
-      },
     })
+
+    if (!user) {
+      throw new Error("No se encontró el usuario en la base de datos")
+    }
 
     const name = formData.get("name")?.toString().trim() || ""
     const clientEmail = formData.get("email")?.toString().trim() || ""

@@ -6,7 +6,16 @@ import { auth } from "@/auth"
 
 export default async function ClientsPage() {
   const session = await auth()
-  const userEmail = session?.user?.email ?? "test@test.com"
+ console.log("SESSION", session)
+const userEmail = session?.user?.email
+
+if (!userEmail) {
+  return (
+    <div className="rounded-lg border bg-white p-4 text-sm text-red-600">
+      No hay sesión activa.
+    </div>
+  )
+}
 
   const user = await prisma.user.findUnique({
   where: { email: userEmail },
@@ -21,7 +30,13 @@ export default async function ClientsPage() {
 },
 })
 
-if (!user) return null
+if (!user) {
+  return (
+    <div className="rounded-lg border bg-white p-4 text-sm text-red-600">
+      No se encontró el usuario en la base de datos.
+    </div>
+  )
+}
    
 
   const clients = user.clients ?? []
@@ -52,16 +67,16 @@ if (!user) return null
         {clients.map((client) => (
           <li key={client.id} className="border rounded p-3">
             <div className="flex items-center justify-between">
-              <a href={`/clients/${client.id}`} className="font-medium">
-                {client.name}
-              </a>
+             <Link href={`/clients/${client.id}`} className="font-medium">
+  {client.name}
+</Link>
 
-              <a
-                href={`/charges/new?clientId=${client.id}`}
-                className="text-sm text-gray-600 underline"
-              >
-                + Cobro
-              </a>
+             <Link
+  href={`/charges/new?clientId=${client.id}`}
+  className="text-sm text-gray-600 underline"
+>
+  + Cobro
+</Link> 
             </div>
 
             {client.email && <div>{client.email}</div>}
