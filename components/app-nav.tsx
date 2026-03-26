@@ -14,18 +14,18 @@ export function AppNav() {
   return (
     <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4">
-        <Link href="/" className="text-xl font-bold">
+        <Link href="/" prefetch={false} className="text-xl font-bold">
           CobroPro
         </Link>
 
         <nav className="flex items-center gap-4 text-sm">
-          <Link href="/dashboard" className={linkClass("/dashboard")}>
+          <Link href="/dashboard" prefetch={false} className={linkClass("/dashboard")}>
             Dashboard
           </Link>
-          <Link href="/clients" className={linkClass("/clients")}>
+          <Link href="/clients" prefetch={false} className={linkClass("/clients")}>
             Clientes
           </Link>
-          <Link href="/charges" className={linkClass("/charges")}>
+          <Link href="/charges" prefetch={false} className={linkClass("/charges")}>
             Cobros
           </Link>
         </nav>
