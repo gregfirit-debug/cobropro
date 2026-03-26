@@ -1,4 +1,4 @@
-import { auth } from "@/auth"
+
 export const revalidate = 60
 
 import Link from "next/link"
@@ -14,12 +14,7 @@ function getChargeStatus(charge: {
 }
 
 export default async function ChargesPage() {
-  const session = await auth()
-  const userEmail = session?.user?.email
-
-  if (!userEmail) {
-    return <div>No hay sesión activa.</div>
-  }
+  const userEmail = "gregfirit@gmail.com"
 
   const user = await prisma.user.findUnique({
     where: { email: userEmail },

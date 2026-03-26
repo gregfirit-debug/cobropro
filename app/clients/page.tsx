@@ -2,20 +2,12 @@ export const revalidate = 60
 
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
-import { auth } from "@/auth"
+
 
 export default async function ClientsPage() {
-  const session = await auth()
- console.log("SESSION", session)
-const userEmail = session?.user?.email
+  
 
-if (!userEmail) {
-  return (
-    <div className="rounded-lg border bg-white p-4 text-sm text-red-600">
-      No hay sesión activa.
-    </div>
-  )
-}
+const userEmail = "gregfirit@gmail.com"
 
   const user = await prisma.user.findUnique({
   where: { email: userEmail },

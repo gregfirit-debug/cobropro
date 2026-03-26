@@ -3,16 +3,11 @@
 import { prisma } from "@/lib/prisma"
 import { redirect } from "next/navigation"
 import { revalidatePath } from "next/cache"
-import { auth } from "@/auth"
+
 
 export async function createClient(formData: FormData) {
   try {
-    const session = await auth()
-    const userEmail = session?.user?.email
-
-    if (!userEmail) {
-      throw new Error("No hay sesión activa")
-    }
+   const userEmail = "gregfirit@gmail.com"
 
     const user = await prisma.user.findUnique({
       where: { email: userEmail },
