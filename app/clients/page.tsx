@@ -73,14 +73,15 @@ export default async function ClientsPage() {
 
                 <div className="flex items-center gap-3">
                   <a
-                    href={`https://wa.me/${client.phone.replace(/\D/g, "")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-green-600 hover:underline"
-                  >
-                    💬 WhatsApp
-                  </a>
-
+  href={`https://wa.me/${client.phone.replace(/\D/g, "")}?text=${encodeURIComponent(
+    `Hola ${client.name}, te escribo por un cobro pendiente.`
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-sm font-medium text-green-600 hover:underline"
+>
+  💬 WhatsApp
+</a>
                   <a
                     href={`tel:${client.phone.replace(/\s+/g, "")}`}
                     className="text-xs text-gray-500 hover:underline"
