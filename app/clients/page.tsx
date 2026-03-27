@@ -72,7 +72,24 @@ if (!user) {
             </div>
 
             {client.email && <div>{client.email}</div>}
-            {client.phone && <div>{client.phone}</div>}
+           {client.phone && (
+  <div className="flex items-center gap-3 mt-1">
+    <a
+      href={`tel:${client.phone.replace(/\s+/g, "")}`}
+      className="text-sm text-blue-600 underline"
+    >
+      📞 Llamar
+    </a>
+
+    <a
+      href={`https://wa.me/${client.phone.replace(/\D/g, "")}`}
+      target="_blank"
+      className="text-sm text-green-600 underline"
+    >
+      💬 WhatsApp
+    </a>
+  </div>
+)}
 
             <div className="text-sm text-gray-500 mt-2">
              {client._count.charges} cobros
