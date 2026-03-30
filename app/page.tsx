@@ -20,54 +20,21 @@ export default function HomePage() {
             desorden, más control y mejor imagen frente a tus clientes.
           </p>
 
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-            <a
-              href="/dashboard"
-              className="inline-flex items-center justify-center rounded-xl bg-black px-6 py-3 text-sm font-medium text-white"
-            >
-              Empezar ahora
-            </a>
+        <div className="flex flex-col gap-3 pt-2 sm:flex-row">
+  <a
+    href="/get-started"
+    className="inline-flex items-center justify-center rounded-xl bg-black px-6 py-3 text-sm font-medium text-white"
+  >
+    Empezar ahora
+  </a>
 
-            <a
-             href="/get-started"
-              className="inline-flex items-center justify-center rounded-xl border bg-white px-6 py-3 text-sm font-medium text-gray-900"
-            >
-              Ver dashboard
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="grid grid-cols-1 gap-4 md:grid-cols-3">
-        <div className="rounded-2xl border bg-white p-6 shadow-sm">
-          <div className="mb-3 text-sm font-medium text-gray-500">CLIENTES</div>
-          <h2 className="text-xl font-semibold text-gray-900">
-            Tu cartera, ordenada
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-gray-600">
-            Guarda nombre, email y teléfono de cada cliente en un solo lugar.
-          </p>
-        </div>
-
-        <div className="rounded-2xl border bg-white p-6 shadow-sm">
-          <div className="mb-3 text-sm font-medium text-gray-500">COBROS</div>
-          <h2 className="text-xl font-semibold text-gray-900">
-            Registra cada pago
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-gray-600">
-            Crea cobros, asigna fechas y controla qué está pendiente o pagado.
-          </p>
-        </div>
-
-        <div className="rounded-2xl border bg-white p-6 shadow-sm">
-          <div className="mb-3 text-sm font-medium text-gray-500">CONTROL</div>
-          <h2 className="text-xl font-semibold text-gray-900">
-            Decide con claridad
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-gray-600">
-            Ve vencidos, pendientes y cobrados sin perder tiempo buscando.
-          </p>
-        </div>
+  <a
+    href="/dashboard"
+    className="inline-flex items-center justify-center rounded-xl border bg-white px-6 py-3 text-sm font-medium text-gray-900"
+  >
+    Ver dashboard
+  </a>
+</div> 
       </section>
     </main>
   )
