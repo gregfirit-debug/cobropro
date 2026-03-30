@@ -1,6 +1,7 @@
+export const revalidate = 60
 import { auth } from "@/auth"
 import { redirect } from "next/navigation"
-export const revalidate = 60
+
 import Link from "next/link"
 
 import { prisma } from "@/lib/prisma"
@@ -12,7 +13,7 @@ export default async function DashboardPage() {
     redirect("/api/auth/signin")
   }
 
-  const [charges, recentCharges] = await Promise.all([
+  
 const [charges, recentCharges] = await Promise.all([
   prisma.charge.findMany(),
   prisma.charge.findMany({
