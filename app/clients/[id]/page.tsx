@@ -1,3 +1,4 @@
+import { deleteClient } from "../actions"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 import { DeleteChargeButton } from "@/components/delete-charge-button"
@@ -76,7 +77,14 @@ export default async function ClientPage({ params }: ClientPageProps) {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-semibold">{client.name}</h1>
-
+<form action={deleteClient.bind(null, client.id)}>
+  <button
+    type="submit"
+    className="mt-3 text-sm text-red-600 hover:underline"
+  >
+    Eliminar cliente
+  </button>
+</form>
         <Link
           href={`/clients/${client.id}/edit`}
           className="inline-block mt-2 text-sm text-gray-600 underline"
@@ -91,7 +99,7 @@ export default async function ClientPage({ params }: ClientPageProps) {
           </form>
         ) : (
           <p className="mt-2 text-sm text-gray-500">
-            No se puede eliminar este cliente porque tiene cobros.
+           
           </p>
         )}
 
