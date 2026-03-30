@@ -47,7 +47,7 @@ export default function GetStartedPage() {
 
           <a
             href="/charges"
-            className="mt-5 inline-flex items-center justify-center rounded-xl border px-5 py-3 text-sm font-medium text-gray-900"
+            className="mt-5 inline-flex items-center justify-center rounded-xl bg-black px-5 py-3 text-sm font-medium text-white"
           >
             Ir a cobros
           </a>
@@ -65,7 +65,7 @@ export default function GetStartedPage() {
 
           <a
             href="/dashboard"
-            className="mt-5 inline-flex items-center justify-center rounded-xl border px-5 py-3 text-sm font-medium text-gray-900"
+            className="mt-5 inline-flex items-center justify-center rounded-xl bg-black px-5 py-3 text-sm font-medium text-white"
           >
             Ver dashboard
           </a>
@@ -83,7 +83,7 @@ export default function GetStartedPage() {
 
           <a
             href="/clients"
-            className="mt-5 inline-flex items-center justify-center rounded-xl border px-5 py-3 text-sm font-medium text-gray-900"
+            className="mt-5 inline-flex items-center justify-center rounded-xl bg-black px-5 py-3 text-sm font-medium text-white"
           >
             Probar contacto
           </a>

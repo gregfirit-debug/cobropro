@@ -1,8 +1,9 @@
 import { auth } from "@/auth"
-export const revalidate = 60
-
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
+
+export const revalidate = 60
+
 
 function getChargeStatus(charge: {
   paid: boolean
