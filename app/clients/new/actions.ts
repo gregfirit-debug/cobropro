@@ -1,19 +1,18 @@
-import { auth } from "@/auth"
 "use server"
 
-import { prisma } from "@/lib/prisma"
-import { redirect } from "next/navigation"
+import { auth } from "@/auth"
 import { revalidatePath } from "next/cache"
-
+import { redirect } from "next/navigation"
+import { prisma } from "@/lib/prisma"
 
 export async function createClient(formData: FormData) {
   try {
-  const session = await auth()
-const userEmail = session?.user?.email
+    const session = await auth()
+    const userEmail = session?.user?.email
 
-if (!userEmail) {
-  throw new Error("No hay sesión activa")
-}
+    if (!userEmail) {
+      throw new Error("No hay sesión activa")
+    }
 
     const user = await prisma.user.findUnique({
       where: { email: userEmail },
