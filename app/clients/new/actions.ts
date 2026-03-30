@@ -1,3 +1,4 @@
+import { auth } from "@/auth"
 "use server"
 
 import { prisma } from "@/lib/prisma"
@@ -7,7 +8,12 @@ import { revalidatePath } from "next/cache"
 
 export async function createClient(formData: FormData) {
   try {
-   const userEmail = "gregfirit@gmail.com"
+  const session = await auth()
+const userEmail = session?.user?.email
+
+if (!userEmail) {
+  throw new Error("No hay sesión activa")
+}
 
     const user = await prisma.user.findUnique({
       where: { email: userEmail },
