@@ -29,7 +29,7 @@ export default function HomePage() {
             </a>
 
             <a
-              href="/dashboard"
+             href="/get-started"
               className="inline-flex items-center justify-center rounded-xl border bg-white px-6 py-3 text-sm font-medium text-gray-900"
             >
               Ver dashboard
