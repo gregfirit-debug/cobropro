@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
     request.nextUrl.pathname.startsWith("/charges")
 
   if (isProtectedRoute && !session) {
-    return NextResponse.redirect(new URL("/", request.url))
+    return NextResponse.redirect(new URL("/api/auth/signin", request.url))
   }
 
   return NextResponse.next()
