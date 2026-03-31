@@ -7,22 +7,21 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Gestión de clientes y cobros",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#000000",
+    background_color: "#22c55e",
+    theme_color: "#22c55e",
     icons: [
-     icons: [
-  {
-    src: "/icon-192.png",
-    sizes: "192x192",
-    type: "image/png",
-    purpose: "any maskable",
-  },
-  {
-    src: "/icon-512.png",
-    sizes: "512x512",
-    type: "image/png",
-    purpose: "any maskable",
-  },
-], 
+      {
+        src: "/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "any maskable",
+      },
+      {
+        src: "/icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any maskable",
+      },
+    ],
   }
 }
