@@ -1,7 +1,6 @@
 import { deleteClient } from "../actions"
 import Link from "next/link"
 import { redirect } from "next/navigation"
-import { DeleteChargeButton } from "@/components/delete-charge-button"
 import { prisma } from "@/lib/prisma"
 
 type ClientPageProps = {
@@ -22,34 +21,15 @@ async function markChargeAsPaid(formData: FormData) {
   redirect(`/clients/${clientId}`)
 }
 
-async function deleteClient(formData: FormData) {
-  "use server"
-
-  const clientId = formData.get("clientId") as string
-
-  const clientWithCharges = await prisma.client.findUnique({
-    where: { id: clientId },
-    include: { charges: true },
-  })
-
-  if (!clientWithCharges) {
-    throw new Error("Cliente no encontrado")
-  }
-
-  if (clientWithCharges.charges.length > 0) {
-    throw new Error("No se puede eliminar un cliente con cobros")
-  }
-
-  await prisma.client.delete({
-    where: { id: clientId },
-  })
-
-  redirect("/clients")
-}
-
-export default async function ClientPage({ params }: ClientPageProps) {
+export default async function ClientPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>
+  searchParams: Promise<{ error?: string }>
+}) {
   const { id } = await params
-
+const { error } = await searchParams
   const client = await prisma.client.findUnique({
     where: { id },
     include: {
@@ -77,14 +57,20 @@ export default async function ClientPage({ params }: ClientPageProps) {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-semibold">{client.name}</h1>
-<form action={deleteClient.bind(null, client.id)}>
-  <button
-    type="submit"
-    className="mt-3 text-sm text-red-600 hover:underline"
-  >
-    Eliminar cliente
-  </button>
-</form>
+{error === "pending" && (
+  <p className="text-red-600 text-sm mt-2">
+    No podés eliminar: hay cobros pendientes
+  </p>
+)}
+        <form action={deleteClient.bind(null, client.id)}>
+          <button
+            type="submit"
+            className="mt-3 text-sm text-red-600 hover:underline"
+          >
+            Eliminar cliente
+          </button>
+        </form>
+
         <Link
           href={`/clients/${client.id}/edit`}
           className="inline-block mt-2 text-sm text-gray-600 underline"
@@ -92,18 +78,7 @@ export default async function ClientPage({ params }: ClientPageProps) {
           Editar cliente
         </Link>
 
-        {client.charges.length === 0 ? (
-          <form action={deleteClient} className="mt-2">
-            <input type="hidden" name="clientId" value={client.id} />
-            <DeleteChargeButton label="Eliminar cliente" />
-          </form>
-        ) : (
-          <p className="mt-2 text-sm text-gray-500">
-           
-          </p>
-        )}
-
-        <div>Email: {client.email || "Sin email"}</div>
+        <div className="mt-2">Email: {client.email || "Sin email"}</div>
         <div>Teléfono: {client.phone || "Sin teléfono"}</div>
       </div>
 
